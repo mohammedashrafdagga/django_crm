@@ -4,11 +4,13 @@
 {% block title %}CRM SYSTEM{% endblock %}
 <!-- content block -->
 {% block content %}
-<div>
+<div class="py-6 px-6">
   <h2 class="text-xl">Create New User</h2>
   <form action="." method="post">
     {% csrf_token %} {{form.as_p}}
-    <button type="submit">Create</button>
+    <button type="submit" class="py-2 px-8 rounded-lg bg-teal-500 text-white">
+      Create
+    </button>
   </form>
 </div>
 {% endblock %}
