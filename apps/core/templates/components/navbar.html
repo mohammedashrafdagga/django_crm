@@ -4,7 +4,28 @@
     <a href="{% url 'core:about' %}" class="text-white py-2 px-6 rounded-xl"
       >about</a
     >
-    <a href="#" class="text-white py-2 px-6 bg-teal-700 rounded-xl">Login</a>
-    <a href="#" class="text-white py-2 px-6 bg-teal-300 rounded-xl">register</a>
+    {% if not request.user.is_authenticated %}
+    <a
+      href="{% url 'authentication:login' %}"
+      class="text-white py-2 px-6 bg-teal-700 rounded-xl"
+      >Login</a
+    >
+    <a
+      href="{% url 'authentication:register' %}"
+      class="text-white py-2 px-6 bg-teal-300 rounded-xl"
+      >register</a
+    >
+    {% else %}
+    <a
+      href="{% url 'dashboard:main' %}"
+      class="text-white py-2 px-6 bg-teal-700 rounded-xl"
+      >Dashboard</a
+    >
+    <a
+      href="{% url 'authentication:logout' %}"
+      class="text-white py-2 px-6 bg-red-300 rounded-xl"
+      >Logout</a
+    >
+    {% endif %}
   </div>
 </nav>
