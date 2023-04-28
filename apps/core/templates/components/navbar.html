@@ -16,7 +16,9 @@
       >register</a
     >
     {% else %}
-    <a href="#" class="text-white py-2 px-6 bg-teal-700 rounded-xl"
+    <a
+      href="{% url 'dashboard:main' %}"
+      class="text-white py-2 px-6 bg-teal-700 rounded-xl"
       >Dashboard</a
     >
     <a
