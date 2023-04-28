@@ -6,5 +6,5 @@ from django.urls import path
 app_name = 'core'
 urlpatterns = [
     path('', index_page, name='index'),
-    path('about/', about_page, name='about_page')
+    path('about/', about_page, name='about')
 ]
