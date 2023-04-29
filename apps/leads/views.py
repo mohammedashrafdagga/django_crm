@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import AddLeadForm
 from .models import Lead
+from apps.client.models import Client
 
 
 @login_required
@@ -22,7 +23,8 @@ def lead_add(request):
 
 @login_required
 def lead_list(request):
-    leads = Lead.objects.filter(create_by=request.user)
+    leads = Lead.objects.filter(
+        create_by=request.user, converted_to_client=False)
     return render(request, 'leads/list.html', {'leads': leads})
 
 
@@ -52,3 +54,17 @@ def lead_edit(request, pk):
     else:
         form = AddLeadForm(instance=lead)
     return render(request, 'leads/edit.html', {'form': form})
+
+
+@login_required
+def convert_to_client(request, pk):
+    lead = get_object_or_404(Lead, create_by=request.user, pk=pk)
+    Client.objects.create(
+        name=lead.name,
+        email=lead.email,
+        description=lead.description,
+        create_by=request.user
+    )
+    lead.converted_to_client = True
+    lead.save()
+    return redirect('client:list')

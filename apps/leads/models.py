@@ -30,6 +30,7 @@ class Lead(models.Model):
         max_length=10, choices=CHOICES_PRIORITY, default=MEDIUM)
     create_by = models.ForeignKey(
         User, related_name='leads', on_delete=models.CASCADE)
+    converted_to_client = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
