@@ -48,7 +48,7 @@ def client_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'The Lead wes update successfully')
-            return redirect('leads:detail', pk=client.id)
+            return redirect('client:detail', pk=client.id)
     else:
         form = AddClientForm(instance=client)
     return render(request, 'client/edit.html', {'form': form})
