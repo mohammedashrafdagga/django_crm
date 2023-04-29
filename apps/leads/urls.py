@@ -1,8 +1,9 @@
-from .views import add_leads
+from .views import leads_add, leads_list
 from django.urls import path
 
 
 app_name = 'leads'
 urlpatterns = [
-    path('add/', add_leads, name='add'),
+    path('', leads_list, name='list'),
+    path('add/', leads_add, name='add'),
 ]
