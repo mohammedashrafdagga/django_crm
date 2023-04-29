@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<!-- title -->
+{% block title %} {{lead.name}} {% endblock %}
+
+<!-- content -->
+{% block content %}
+<div class="py-6 px-6">
+  <h2 class="mb-4 text-xl">{{lead.name}}</h2>
+  {% if lead.description %}
+  <p class="font-semibold">Description</p>
+  <p class="mb-2 font-semibold">{{lead.description}}</p>
+  {% endif %}
+  <p class="font-semibold">Priority</p>
+  <p class="mb-2">{{lead.get_priority_display}}</p>
+  <p class="font-semibold">Status</p>
+  <p class="mb-2">{{lead.get_status_display}}</p>
+
+  <a
+    href="{% url 'leads:list' %}"
+    class="mt-4 inline-block text-white py-2 px-6 bg-teal-700 rounded-xl"
+    >Back to Leads</a
+  >
+</div>
+{% endblock %}
