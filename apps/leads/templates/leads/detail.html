@@ -17,14 +17,19 @@
   <p class="mb-2">{{lead.get_status_display}}</p>
   <hr class="my-4" />
   <a
+    href="{% url 'leads:edit' lead.id %}"
+    class="mt-4 inline-block text-white py-2 px-6 bg-teal-500 rounded-xl"
+    >edit</a
+  >
+  <a
     href="{% url 'leads:delete' lead.id %}"
-    class="mt-4 inline-block text-white py-2 px-6 bg-red-700 rounded-xl"
-    >Delete</a
+    class="mt-4 inline-block text-white py-2 px-6 bg-red-500 rounded-xl"
+    >delete</a
   >
   <hr class="my-4" />
   <a
     href="{% url 'leads:list' %}"
-    class="mt-4 inline-block text-white py-2 px-6 bg-teal-700 rounded-xl"
+    class="mt-4 inline-block text-white py-2 px-6 bg-teal-500 rounded-xl"
     >Back to Leads</a
   >
 </div>

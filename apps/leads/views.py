@@ -38,3 +38,17 @@ def lead_delete(request, pk):
     lead.delete()
     messages.success(request, 'The Lead wes deleted.')
     return redirect('leads:list')
+
+
+@login_required
+def lead_edit(request, pk):
+    lead = get_object_or_404(Lead, create_by=request.user, pk=pk)
+    if request.method == 'POST':
+        form = AddLeadForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The Lead wes update successfully')
+            return redirect('leads:detail', pk=lead.id)
+    else:
+        form = AddLeadForm(instance=lead)
+    return render(request, 'leads/edit.html', {'form': form})
