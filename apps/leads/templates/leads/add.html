@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 <!-- title block -->
-{% block title %}CRM SYSTEM{% endblock %}
-<!-- content block -->
+{% block title %} add lead {% endblock %}
+
+<!-- content  -->
 {% block content %}
 <div class="py-6 px-6">
-  <h2 class="text-xl">Login into you Account</h2>
+  <h2 class="text-xl">Add new Lead</h2>
   <form action="." method="post">
     {% csrf_token %} {{form.as_p}}
     <button type="submit" class="py-2 px-8 rounded-lg bg-teal-500 text-white">
-      Login
+      Add
     </button>
   </form>
 </div>
